@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="kafkaproducer" default="all">
+  
+  
+  <property file="kafkaproducer.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.7" value="${jdk.home.1.7}/bin"/>
+  <path id="jdk.classpath.1.7">
+    <fileset dir="${jdk.home.1.7}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/compilefontconfig.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/icedtea-sound.jar"/>
+      <include name="jre/lib/ext/java-atk-wrapper.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javazic.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rhino.jar"/>
+      <include name="jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.7}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.7}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.7"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.maven:_com.101tec:zkclient:0.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/101tec/zkclient/0.3/zkclient-0.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.yammer.metrics:metrics-core:2.2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/yammer/metrics/metrics-core/2.2.0/metrics-core-2.2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_log4j:log4j:1.2.14.classpath">
+    <pathelement location="${path.variable.maven_repository}/log4j/log4j/1.2.14/log4j-1.2.14.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.jpountz.lz4:lz4:1.2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/jpountz/lz4/lz4/1.2.0/lz4-1.2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.kafka:kafka-clients:0.8.2.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/kafka/kafka-clients/0.8.2.1/kafka-clients-0.8.2.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.kafka:kafka_2.11:0.8.2.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/kafka/kafka_2.11/0.8.2.1/kafka_2.11-0.8.2.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.spark:spark-streaming-kafka-0-8_2.11:2.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/spark/spark-streaming-kafka-0-8_2.11/2.0.1/spark-streaming-kafka-0-8_2.11-2.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.spark:spark-tags_2.11:2.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/spark/spark-tags_2.11/2.0.1/spark-tags_2.11-2.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.scala-lang.modules:scala-parser-combinators_2.11:1.0.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.2/scala-parser-combinators_2.11-1.0.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.scala-lang.modules:scala-xml_2.11:1.0.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/scala-lang/modules/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.scala-lang:scala-library:2.11.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/scala-lang/scala-library/2.11.5/scala-library-2.11.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.scala-lang:scala-reflect:2.11.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.scalatest:scalatest_2.11:2.2.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/scalatest/scalatest_2.11/2.2.6/scalatest_2.11-2.2.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:slf4j-api:1.7.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.spark-project.spark:unused:1.0.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/spark-project/spark/unused/1.0.0/unused-1.0.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.xerial.snappy:snappy-java:1.1.1.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/xerial/snappy/snappy-java/1.1.1.6/snappy-java-1.1.1.6.jar"/>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/module_kafkaproducer.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.kafkaproducer" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.kafkaproducer" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>

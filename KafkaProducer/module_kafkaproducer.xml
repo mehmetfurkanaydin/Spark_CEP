@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_kafkaproducer" default="compile.module.kafkaproducer">
+  <dirname property="module.kafkaproducer.basedir" file="${ant.file.module_kafkaproducer}"/>
+  
+  <property name="module.jdk.home.kafkaproducer" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.kafkaproducer" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.kafkaproducer" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.kafkaproducer" value="-encoding UTF-8 -source 1.5 -target 1.5 ${compiler.args}"/>
+  
+  <property name="kafkaproducer.output.dir" value="${module.kafkaproducer.basedir}/target/classes"/>
+  <property name="kafkaproducer.testoutput.dir" value="${module.kafkaproducer.basedir}/target/test-classes"/>
+  
+  <path id="kafkaproducer.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="kafkaproducer.module.production.classpath">
+    <path refid="${module.jdk.classpath.kafkaproducer}"/>
+    <path refid="library.maven:_org.apache.spark:spark-streaming-kafka-0-8_2.11:2.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka_2.11:0.8.2.1.classpath"/>
+    <path refid="library.maven:_org.scala-lang.modules:scala-xml_2.11:1.0.2.classpath"/>
+    <path refid="library.maven:_com.yammer.metrics:metrics-core:2.2.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.2.classpath"/>
+    <path refid="library.maven:_org.scala-lang.modules:scala-parser-combinators_2.11:1.0.2.classpath"/>
+    <path refid="library.maven:_com.101tec:zkclient:0.3.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.14.classpath"/>
+    <path refid="library.maven:_org.scala-lang:scala-library:2.11.5.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka-clients:0.8.2.1.classpath"/>
+    <path refid="library.maven:_net.jpountz.lz4:lz4:1.2.0.classpath"/>
+    <path refid="library.maven:_org.xerial.snappy:snappy-java:1.1.1.6.classpath"/>
+    <path refid="library.maven:_org.apache.spark:spark-tags_2.11:2.0.1.classpath"/>
+    <path refid="library.maven:_org.scalatest:scalatest_2.11:2.2.6.classpath"/>
+    <path refid="library.maven:_org.scala-lang:scala-reflect:2.11.7.classpath"/>
+    <path refid="library.maven:_org.spark-project.spark:unused:1.0.0.classpath"/>
+  </path>
+  
+  <path id="kafkaproducer.runtime.production.module.classpath">
+    <pathelement location="${kafkaproducer.output.dir}"/>
+    <path refid="library.maven:_org.apache.spark:spark-streaming-kafka-0-8_2.11:2.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka_2.11:0.8.2.1.classpath"/>
+    <path refid="library.maven:_org.scala-lang.modules:scala-xml_2.11:1.0.2.classpath"/>
+    <path refid="library.maven:_com.yammer.metrics:metrics-core:2.2.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.2.classpath"/>
+    <path refid="library.maven:_org.scala-lang.modules:scala-parser-combinators_2.11:1.0.2.classpath"/>
+    <path refid="library.maven:_com.101tec:zkclient:0.3.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.14.classpath"/>
+    <path refid="library.maven:_org.scala-lang:scala-library:2.11.5.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka-clients:0.8.2.1.classpath"/>
+    <path refid="library.maven:_net.jpountz.lz4:lz4:1.2.0.classpath"/>
+    <path refid="library.maven:_org.xerial.snappy:snappy-java:1.1.1.6.classpath"/>
+    <path refid="library.maven:_org.apache.spark:spark-tags_2.11:2.0.1.classpath"/>
+    <path refid="library.maven:_org.scalatest:scalatest_2.11:2.2.6.classpath"/>
+    <path refid="library.maven:_org.scala-lang:scala-reflect:2.11.7.classpath"/>
+    <path refid="library.maven:_org.spark-project.spark:unused:1.0.0.classpath"/>
+  </path>
+  
+  <path id="kafkaproducer.module.classpath">
+    <path refid="${module.jdk.classpath.kafkaproducer}"/>
+    <pathelement location="${kafkaproducer.output.dir}"/>
+    <path refid="library.maven:_org.apache.spark:spark-streaming-kafka-0-8_2.11:2.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka_2.11:0.8.2.1.classpath"/>
+    <path refid="library.maven:_org.scala-lang.modules:scala-xml_2.11:1.0.2.classpath"/>
+    <path refid="library.maven:_com.yammer.metrics:metrics-core:2.2.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.2.classpath"/>
+    <path refid="library.maven:_org.scala-lang.modules:scala-parser-combinators_2.11:1.0.2.classpath"/>
+    <path refid="library.maven:_com.101tec:zkclient:0.3.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.14.classpath"/>
+    <path refid="library.maven:_org.scala-lang:scala-library:2.11.5.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka-clients:0.8.2.1.classpath"/>
+    <path refid="library.maven:_net.jpountz.lz4:lz4:1.2.0.classpath"/>
+    <path refid="library.maven:_org.xerial.snappy:snappy-java:1.1.1.6.classpath"/>
+    <path refid="library.maven:_org.apache.spark:spark-tags_2.11:2.0.1.classpath"/>
+    <path refid="library.maven:_org.scalatest:scalatest_2.11:2.2.6.classpath"/>
+    <path refid="library.maven:_org.scala-lang:scala-reflect:2.11.7.classpath"/>
+    <path refid="library.maven:_org.spark-project.spark:unused:1.0.0.classpath"/>
+  </path>
+  
+  <path id="kafkaproducer.runtime.module.classpath">
+    <pathelement location="${kafkaproducer.testoutput.dir}"/>
+    <pathelement location="${kafkaproducer.output.dir}"/>
+    <path refid="library.maven:_org.apache.spark:spark-streaming-kafka-0-8_2.11:2.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka_2.11:0.8.2.1.classpath"/>
+    <path refid="library.maven:_org.scala-lang.modules:scala-xml_2.11:1.0.2.classpath"/>
+    <path refid="library.maven:_com.yammer.metrics:metrics-core:2.2.0.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.2.classpath"/>
+    <path refid="library.maven:_org.scala-lang.modules:scala-parser-combinators_2.11:1.0.2.classpath"/>
+    <path refid="library.maven:_com.101tec:zkclient:0.3.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.14.classpath"/>
+    <path refid="library.maven:_org.scala-lang:scala-library:2.11.5.classpath"/>
+    <path refid="library.maven:_org.apache.kafka:kafka-clients:0.8.2.1.classpath"/>
+    <path refid="library.maven:_net.jpountz.lz4:lz4:1.2.0.classpath"/>
+    <path refid="library.maven:_org.xerial.snappy:snappy-java:1.1.1.6.classpath"/>
+    <path refid="library.maven:_org.apache.spark:spark-tags_2.11:2.0.1.classpath"/>
+    <path refid="library.maven:_org.scalatest:scalatest_2.11:2.2.6.classpath"/>
+    <path refid="library.maven:_org.scala-lang:scala-reflect:2.11.7.classpath"/>
+    <path refid="library.maven:_org.spark-project.spark:unused:1.0.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.kafkaproducer">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.kafkaproducer">
+    <patternset refid="excluded.from.module.kafkaproducer"/>
+  </patternset>
+  
+  <path id="kafkaproducer.module.sourcepath">
+    <dirset dir="${module.kafkaproducer.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="kafkaproducer.module.test.sourcepath">
+    <dirset dir="${module.kafkaproducer.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.kafkaproducer" depends="compile.module.kafkaproducer.production,compile.module.kafkaproducer.tests" description="Compile module KafkaProducer"/>
+  
+  <target name="compile.module.kafkaproducer.production" depends="register.custom.compilers" description="Compile module KafkaProducer; production classes">
+    <mkdir dir="${kafkaproducer.output.dir}"/>
+    <javac2 destdir="${kafkaproducer.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.kafkaproducer}/javac">
+      <compilerarg line="${compiler.args.kafkaproducer}"/>
+      <bootclasspath refid="kafkaproducer.module.bootclasspath"/>
+      <classpath refid="kafkaproducer.module.production.classpath"/>
+      <src refid="kafkaproducer.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.kafkaproducer"/>
+    </javac2>
+    
+    <copy todir="${kafkaproducer.output.dir}">
+      <fileset dir="${module.kafkaproducer.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.kafkaproducer.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.kafkaproducer.tests" depends="register.custom.compilers,compile.module.kafkaproducer.production" description="compile module KafkaProducer; test classes" unless="skip.tests">
+    <mkdir dir="${kafkaproducer.testoutput.dir}"/>
+    <javac2 destdir="${kafkaproducer.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.kafkaproducer}/javac">
+      <compilerarg line="${compiler.args.kafkaproducer}"/>
+      <bootclasspath refid="kafkaproducer.module.bootclasspath"/>
+      <classpath refid="kafkaproducer.module.classpath"/>
+      <src refid="kafkaproducer.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.kafkaproducer"/>
+    </javac2>
+    
+    <copy todir="${kafkaproducer.testoutput.dir}">
+      <fileset dir="${module.kafkaproducer.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.kafkaproducer" description="cleanup module">
+    <delete dir="${kafkaproducer.output.dir}"/>
+    <delete dir="${kafkaproducer.testoutput.dir}"/>
+  </target>
+</project>
