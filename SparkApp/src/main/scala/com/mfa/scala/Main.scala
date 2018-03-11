@@ -1,6 +1,5 @@
 package com.mfa.scala
 
-
 import kafka.serializer.StringDecoder
 import org.apache.spark.{SparkConf}
 import org.apache.spark.streaming.{Seconds, StreamingContext}
@@ -11,7 +10,6 @@ import com.mfa.{CalculateCosineSimilarity, KafkaProducerClass}
 
 import scala.io.Source
 import spray.json._
-
 
 case class Event(ip: String, clientId: String, userId: String, viewId: String, productId: String, checkout: String, eventType: String)
 
@@ -215,16 +213,10 @@ object Main {
                      println("=================================================") */
                   }
                 }
-
               }
-
             }
-
           }
-
         }
-
-
 
         ruleList.foreach(rule => {
           rule.eventObject match {
@@ -242,12 +234,8 @@ object Main {
             }
           }
         })
-
-
       }
     })
-
-
 
     ssc.checkpoint("home/Desktop/checkpoint/")
     ssc.start()
@@ -268,13 +256,10 @@ object Main {
     return "Kafka Producer Run"
   }
 
-
   def doRule(map: Map[String, scala.List[Set[String]]], rule: Rule, eventType: String): Int = {
 
     rule.countType match {
       case "total" => {
-
-
         for ((userNo, itemList) <- map) {
           var totalItem = 0
           for (ListOfItems <- itemList) {
